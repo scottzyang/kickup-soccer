@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from kickup_app.models import User, Team
 
 main = Blueprint('main', __name__)
 
