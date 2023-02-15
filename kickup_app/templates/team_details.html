@@ -1,1 +1,20 @@
 {% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ team.team_name }}</h1>
+
+<section>
+  <img src="{{team.logo_url}}" width="250" height="250"/>
+  <p><strong>Date Formed: </strong>{{ team.date_formed.strftime('%b, %d, %Y') }}</p>
+  <p><strong>Team: </strong>{{ team.team_id }}</p>
+
+  {% for player in team.players %}
+
+  <li>{{player.first_name}} {{player.last_name}}</li>
+
+  {% endfor %}
+
+</section>
+
+{% endblock %}
