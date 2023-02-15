@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Sign Up</h1>
+
+<form action="/signup" method="POST">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Enter your profile information below:</legend>
+
+        {{ form.username.label }}
+        {{ form.username }}
+        <ul>
+        {% for error in form.username.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.profile_picture.label }}
+        {{ form.profile_picture }}
+        <ul>
+        {% for error in form.profile_picture.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.first_name.label }}
+        {{ form.first_name }}
+        <ul>
+        {% for error in form.first_name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        
+        {{ form.last_name.label }}
+        {{ form.last_name}}
+        <ul>
+        {% for error in form.last_name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.position.label }}
+        {{ form.position}}
+        <ul>
+        {% for error in form.position.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.birth_date.label }}
+        {{ form.birth_date }}
+        <ul>
+        {% for error in form.birth_date.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.password.label }}
+        {{ form.password }}
+        <ul>
+        {% for error in form.password.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.submit }}
+
+    </fieldset>
+</form>
+
+{% endblock %}
