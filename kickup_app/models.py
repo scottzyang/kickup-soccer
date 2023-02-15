@@ -24,13 +24,14 @@ class User(db.Model):
     """User Model"""
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), nullable=False)
+    profile_picture = db.Column(db.String(), nullable=True)
     first_name = db.Column(db.String(80), nullable=False)
     last_name = db.Column(db.String(80), nullable=False)
     birth_date = db.Column(db.Date)
     position = db.Column(db.Enum(Position), default=Position)
+    team_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=True)
 
     # user linkage to team
-    team_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=True)
     team = db.relationship('Team', back_populates='players')
 
     def __str__(self):
