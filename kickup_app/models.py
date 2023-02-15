@@ -45,6 +45,8 @@ class Team(db.Model):
     """Team Model"""
     id = db.Column(db.Integer, primary_key=True)
     team_name = db.Column(db.String(80), nullable=False)
+    logo_url = db.Column(db.String(), nullable=True)
+    date_formed = db.Column(db.Date)
 
     players = db.relationship('User', back_populates='team')
   
