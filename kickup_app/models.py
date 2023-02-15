@@ -2,6 +2,7 @@
 from kickup_app.extensions import db
 from sqlalchemy.orm import backref
 from flask_login import UserMixin
+from datetime import datetime
 import enum
 
 class FormEnum(enum.Enum):
@@ -50,9 +51,25 @@ class Team(db.Model):
 
     def __repr__(self):
         return f'Team Name: {self.team_name}'
+    
+class Game(db.Model):
+    """Game Model"""
+    id = db.Column(db.Integer, primary_key=True)
+    location = db.Column(db.String(80), nullable=False)
+    time = db.Column(db.Date)
 
-# table to link player with teams
-# user_team_table = db.Table('user_team', 
-#     db.Column('team_id', db.Integer, db.ForeignKey('team.id')),
-#     db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
-# )
+    # link team to team ID
+    home_id = db.Column(db.Integer, db.ForeignKey("team.id"), nullable=True)
+    away_id = db.Column(db.Integer, db.ForeignKey("team.id"), nullable=True)
+
+    # foreign key links, refers to the FK id's above and establishes relationship with the team.id
+    home_team = db.relationship('Team', foreign_keys=[home_id])
+    away_team = db.relationship('Team', foreign_keys=[away_id])
+
+    def __str__(self):
+        return f'Game time: {self.time}\nLocation: {self.location}'
+
+    def __repr__(self):
+        return f'Game time: {self.time}\nLocation: {self.location}'
+
+# table to link game with teams
