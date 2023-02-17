@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, request, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
-from datetime import datetime
+from datetime import datetime, time, date
 from kickup_app.models import *
 from kickup_app.main.forms import *
 
@@ -41,3 +41,28 @@ def create_team():
 def team_details(team_id):
   team = Team.query.get(team_id)
   return render_template('team_details.html', team=team)
+
+@main.route('/create-game', methods=['GET', 'POST'])
+@login_required
+def create_game():
+  form = GameForm()
+  if form.validate_on_submit():
+    game = Game(
+      name=form.name.data,
+      location=form.location.data,
+      date=form.date.data,
+      time=form.time.data,
+      home_team=form.home_team.data,
+      away_team=form.away_team.data,
+    )
+    db.session.add(game)
+    db.session.commit()
+    flash('Game successfully created. Game on!')
+    return redirect(url_for('main.game_details', game_id=game.id)) 
+  return render_template('create_game.html', form=form)
+
+@main.route('/game-details/<game_id>', methods=['GET', 'POST'])
+@login_required
+def game_details(game_id):
+  game = Game.query.get(game_id)
+  return render_template('game_details.html', game=game)

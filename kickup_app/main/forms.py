@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SelectField, SubmitField, TextAreaField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField, QuerySelectMultipleField
 from wtforms.validators import DataRequired, Length, ValidationError
-from wtforms.fields.html5 import DateField
+from wtforms.fields.html5 import DateField, TimeField
 from kickup_app.extensions import bcrypt
 from kickup_app.models import *
 
@@ -17,3 +17,14 @@ class TeamForm(FlaskForm):
         team = Team.query.filter_by(team_name=team_name.data).first()
         if team:
             raise ValidationError('That username is taken. Please choose a different one.')
+
+class GameForm(FlaskForm):
+    '''Form to create new game'''
+    name = StringField('Game Title', validators=[DataRequired(), Length(min=3, max=100)])
+    location = StringField('Game Location', validators=[DataRequired(), Length(min=3, max=100)])
+    date = DateField('Date', validators=[DataRequired()])
+    time = TimeField('Time', validators=[DataRequired()])
+    home_team = QuerySelectField('Home Team', query_factory=lambda: Team.query)
+    away_team = QuerySelectField('Away Team', query_factory=lambda: Team.query)
+
+    submit = SubmitField('Submit')
