@@ -1,1 +1,65 @@
 {% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Create Game</h1>
+
+<form action="/create-game" method="POST">
+  {{ form.csrf_token }}
+  <fieldset>
+      <legend>Enter your game information below:</legend>
+      {{ form.name.label }}
+      {{ form.name }}
+      <ul>
+        {% for error in form.name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+      {{ form.location.label }}
+      {{ form.location }}
+      <ul>
+      {% for error in form.location.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+
+      {{ form.date.label }}
+      {{ form.date }}
+      <ul>
+      {% for error in form.time.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+      {{ form.time.label }}
+      {{ form.time }}
+      <ul>
+      {% for error in form.time.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+      {{ form.home_team.label }}
+      {{ form.home_team }}
+      <ul>
+      {% for error in form.home_team.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+      {{ form.away_team.label }}
+      {{ form.away_team }}
+      <ul>
+      {% for error in form.away_team.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+      {{ form.submit }}
+
+  </fieldset>
+</form>
+
+{% endblock %}
