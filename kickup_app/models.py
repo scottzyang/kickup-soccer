@@ -48,7 +48,10 @@ class Team(db.Model):
     logo_url = db.Column(db.String(), nullable=True)
     date_formed = db.Column(db.Date)
 
+    # relationship lists
     players = db.relationship('User', back_populates='team')
+    home_games = db.relationship('Game', back_populates="home_team", foreign_keys="Game.home_id")
+    away_games = db.relationship('Game', back_populates="away_team", foreign_keys="Game.away_id")
   
     def __str__(self):
         return f'Team Name: {self.team_name}'
@@ -59,21 +62,21 @@ class Team(db.Model):
 class Game(db.Model):
     """Game Model"""
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
     location = db.Column(db.String(80), nullable=False)
-    time = db.Column(db.Date)
+    date = db.Column(db.Date, nullable=False)
+    time = db.Column(db.Time, nullable=False)
 
     # link team to team ID
     home_id = db.Column(db.Integer, db.ForeignKey("team.id"), nullable=True)
     away_id = db.Column(db.Integer, db.ForeignKey("team.id"), nullable=True)
 
     # foreign key links, refers to the FK id's above and establishes relationship with the team.id
-    home_team = db.relationship('Team', foreign_keys=[home_id])
-    away_team = db.relationship('Team', foreign_keys=[away_id])
+    home_team = db.relationship('Team', back_populates="home_games", foreign_keys=[home_id])
+    away_team = db.relationship('Team', back_populates="away_games", foreign_keys=[away_id])
 
     def __str__(self):
         return f'Game time: {self.time}\nLocation: {self.location}'
 
     def __repr__(self):
         return f'Game time: {self.time}\nLocation: {self.location}'
-
-# table to link game with teams
