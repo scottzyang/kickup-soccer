@@ -9,7 +9,7 @@ from kickup_app.models import *
 class SignUpForm(FlaskForm):
     '''Form to create a new User'''
     username = StringField('Username', validators=[DataRequired(), Length(min=3, max=80)])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=8, max=80)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=6, max=80)])
     profile_picture = StringField('Profile Picture URL')
     first_name = StringField('First name', validators=[DataRequired(), Length(max=80)])
     last_name = StringField('Last name', validators=[DataRequired(), Length(max=80)])
