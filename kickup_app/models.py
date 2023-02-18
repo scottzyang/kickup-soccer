@@ -1,5 +1,5 @@
 # Create your models here.
-from kickup_app.extensions import db
+from kickup_app import db
 from sqlalchemy.orm import backref
 from flask_login import UserMixin
 from datetime import datetime
