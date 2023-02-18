@@ -1,5 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1>All registered players</h1>
+
+<ol>
+  {% for player in players %}
+  <li>
+    <a href="/profile/{{ player.username }}">
+      <p><strong>Name: </strong>{{ player.first_name }} {{ player.last_name }}</p>
+      <p><strong>Position: </strong>{{ player.position }}</p>
+     </a>
+  </li>
+  {% endfor %}
+</ol>
+
 
 {% endblock %}

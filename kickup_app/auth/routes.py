@@ -17,6 +17,7 @@ def signup():
             username=form.username.data,
             password=hashed_password, 
             profile_picture=form.profile_picture.data,
+            position=form.position.data,
             first_name=form.first_name.data,
             last_name=form.last_name.data,
             birth_date=form.birth_date.data
