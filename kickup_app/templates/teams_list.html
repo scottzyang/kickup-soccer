@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>All registered Teams</h1>
+
+<ol>
+  {% for team in teams %}
+  <li>
+    <a href="/team-details/{{ team.id }}">
+      <p><strong>Team Name: </strong>{{ team.team_name }}</p>
+      <p><strong>Roster Count: </strong>{{ team.players|length }}</p>
+     </a>
+  </li>
+  {% endfor %}
+</ol>
+
+
+{% endblock %}

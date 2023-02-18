@@ -72,3 +72,9 @@ def game_details(game_id):
 def players_list():
   players = User.query.all()
   return render_template('player_list.html', players=players)
+
+@main.route('/teams', methods=['GET'])
+@login_required
+def teams_list():
+  teams = Team.query.all()
+  return render_template('teams_list.html', teams=teams)
