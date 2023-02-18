@@ -54,7 +54,7 @@ class Team(db.Model):
     away_games = db.relationship('Game', back_populates="away_team", foreign_keys="Game.away_id")
   
     def __str__(self):
-        return f'Team Name: {self.team_name}'
+        return f'{self.team_name}'
 
     def __repr__(self):
         return f'Team Name: {self.team_name}'

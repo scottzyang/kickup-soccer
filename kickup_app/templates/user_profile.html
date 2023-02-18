@@ -9,7 +9,13 @@
   <img src="{{user.profile_picture}}" width="250" height="250"/>
   <p><strong>Name: </strong>{{ user.first_name }} {{ user.last_name }}</p>
   <p><strong>Birthday: </strong>{{ user.birth_date.strftime('%b, %d, %Y') }}</p>
-  <p><strong>Team: </strong>{{ user.team_id }}</p>
+  <p><strong>Current Team: </strong>
+    {% if not user.team %}
+      None
+    {% else %}
+      {{ user.team }}
+    {% endif %}
+  </p>
 </section>
 
 {% endblock %}

@@ -7,14 +7,24 @@
 <section>
   <img src="{{team.logo_url}}" width="250" height="250"/>
   <p><strong>Date Formed: </strong>{{ team.date_formed.strftime('%b, %d, %Y') }}</p>
-  <p><strong>Team: </strong>{{ team.team_id }}</p>
 
-  {% for player in team.players %}
+  <h2>Current Roster</h2>
+  <ol>
+    {% for player in team.players %}
 
-  <li>{{player.first_name}} {{player.last_name}}</li>
+    <li>
+      <p>Name: {{player.first_name}} {{player.last_name}}</p>
+      <p>Position: {{ player.position }}</p>
+    </li>
+  
+    {% endfor %}
+  </ol>
 
-  {% endfor %}
 
+  <!-- <form action="/join-team/{{team.id}}">
+    <input type="submit" value="Join Team!" />
+  </form> -->
+  <a href="/join-team/{{team.id}}"><button>Join Team!</button></a>
 </section>
 
 {% endblock %}

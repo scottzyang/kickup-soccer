@@ -17,6 +17,7 @@ def homepage():
 @login_required
 def profile(username):
   user = User.query.filter_by(username=username).one()
+  
   return render_template('user_profile.html', user=user)
 
 
@@ -78,3 +79,17 @@ def players_list():
 def teams_list():
   teams = Team.query.all()
   return render_template('teams_list.html', teams=teams)
+
+@main.route('/join-team/<team_id>', methods=['GET', 'POST'])
+@login_required
+def join_team(team_id):
+  print(team_id)
+  user = User.query.filter_by(username=current_user.username).one()
+  join_team = Team.query.filter_by(id=team_id).one()
+  join_team.players.append(user)
+
+  db.session.add(user)
+  db.session.add(join_team)
+  db.session.commit()
+  return redirect(url_for('main.team_details', team_id=team_id))
+
