@@ -34,8 +34,10 @@
     {% for player in team.players %}
 
     <li>
-      <p>Name: {{player.first_name}} {{player.last_name}}</p>
-      <p>Position: {{ player.position }}</p>
+      <a href="/profile/{{ player.username }}">
+        <p>Name: {{player.first_name}} {{player.last_name}}</p>
+        <p>Position: {{ player.position }}</p>
+      </a>
     </li>
   
     {% endfor %}
