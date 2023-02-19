@@ -80,6 +80,12 @@ def teams_list():
   teams = Team.query.all()
   return render_template('teams_list.html', teams=teams)
 
+@main.route('/games', methods=["GET"])
+@login_required
+def games_list():
+  games = Game.query.all()
+  return render_template('games_list.html', games=games)
+
 @main.route('/join-team/<team_id>', methods=['GET', 'POST'])
 @login_required
 def join_team(team_id):
