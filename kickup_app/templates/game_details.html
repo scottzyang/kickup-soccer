@@ -9,8 +9,8 @@
   <p><strong>Date: </strong>{{ game.date.strftime('%b, %d, %Y') }}</p>
   <p><strong>Time: </strong>{{ game.time.strftime('%I:%M %p') }}</p>
 
-  <p><strong>Home Team: </strong>{{ game.home_team.team_name }}</p>
-  <p><strong>Away Team: </strong>{{ game.away_team.team_name }}</p>
+  <p><strong>Home Team: </strong><a href="/team-details/{{game.home_team.id}}">{{ game.home_team.team_name }}</a></p>
+  <p><strong>Away Team: </strong><a href="/team-details/{{game.away_team.id}}">{{ game.away_team.team_name }}</a></p>
 
 </section>
 

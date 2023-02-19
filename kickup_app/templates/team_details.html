@@ -8,7 +8,28 @@
   <img src="{{team.logo_url}}" width="250" height="250"/>
   <p><strong>Date Formed: </strong>{{ team.date_formed.strftime('%b, %d, %Y') }}</p>
 
-  <h2>Current Roster</h2>
+  <h2>Upcoming Games: </h2 >
+  {% set all_games = [] %}
+  {% for game in team.away_games %}
+  {{ all_games.append(game) or ""}}
+  {% endfor %}  
+  {% for game in team.home_games %}
+  {{ all_games.append(game) or ""}}
+  {% endfor %}
+  <ol>
+    {% for game in all_games %}
+
+    <li>
+      <p>Date: {{game.date.strftime("%b, %d, %Y")}}</p>
+      <p>Time: {{game.time.strftime('%I:%M %p')}}</p>
+      <p>Location: {{game.location}}</p>
+    </li>
+  
+    {% endfor %}
+  </ol>
+
+
+  <h3>Current Roster</h3>
   <ol>
     {% for player in team.players %}
 
