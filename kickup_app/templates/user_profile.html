@@ -16,6 +16,9 @@
       {{ user.team }}
     {% endif %}
   </p>
+  {% if current_user.id == user.id %}
+  <button><a href="/profile/{{user.username}}/settings">Settings</a></button>
+  {% endif %}
 </section>
 
 {% endblock %}

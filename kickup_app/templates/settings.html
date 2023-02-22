@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Settings</h1>
+<form action="/profile/{{user.username}}/settings" method="POST">
+  {{ user_form.csrf_token }}
+  <fieldset>
+    <legend>Update User Profile</legend>
+    {% if current_user.id == user.id %}
+    {% if current_user.is_authenticated %}
+      {{ user_form.username.label }}
+      {{ user_form.username }}
+      <ul>
+      {% for error in user_form.username.errors %}
+        <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+      {{ user_form.profile_picture.label }}
+      {{ user_form.profile_picture }}
+      <ul>
+      {% for error in user_form.profile_picture.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+      {{ user_form.first_name.label }}
+      {{ user_form.first_name }}
+      <ul>
+      {% for error in user_form.first_name.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+      {{ user_form.last_name.label }}
+      {{ user_form.last_name}}
+      <ul>
+      {% for error in user_form.last_name.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+      {{ user_form.position.label }}
+      {{ user_form.position}}
+      <ul>
+      {% for error in user_form.position.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+      {{ user_form.submit }}
+    {% endif %}
+    {% endif %}
+    </fieldset>
+</form>
+<br/>
+<form action="/profile/{{user.username}}/settings" method="POST">
+  {{ team_form.csrf_token }}
+  <fieldset>
+    <legend>Update User Profile</legend>
+    {% if current_user.id == user.id %}
+    {% if current_user.is_authenticated %}
+      {{ team_form.team_name.label }}
+      {{ team_form.team_name }}
+      <ul>
+      {% for error in team_form.team_name.errors %}
+        <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+
+      {{ team_form.logo_url.label }}
+      {{ team_form.logo_url }}
+      <ul>
+      {% for error in team_form.logo_url.errors %}
+          <li class="error">{{ error }}</li>
+      {% endfor %}
+      </ul>
+      {{ team_form.submit }}
+    {% endif %}
+    {% endif %}
+    </fieldset>
+</form>
+
+<h3>Update Current Games</h3>
+{% endblock %}
