@@ -17,8 +17,30 @@ def homepage():
 @login_required
 def profile(username):
   user = User.query.filter_by(username=username).one()
-  
   return render_template('user_profile.html', user=user)
+
+@main.route('/profile/<username>/settings', methods=['GET', 'POST'])
+@login_required
+def settings(username):
+  user = User.query.filter_by(username=username).one()
+  user_team = user.team
+  user_form = UserForm()
+  team_form = TeamForm()
+  game_form = GameForm()
+
+  if user_form.validate_on_submit():
+    user.username = user.username.data if user_form.username.data == '' else user_form.username.data
+    user.profile_picture = user.profile_picture if user_form.profile_picture.data == '' else user_form.profile_picture.data
+    user.first_name = user.first_name if user_form.first_name.data == '' else user_form.first_name.data
+    user.last_name = user.last_name if user_form.last_name.data == '' else user_form.last_name.data
+    user.position = user.position if user_form.position.data =='' else user_form.position.data
+    db.session.commit()
+    flash('User Updated.')
+    return redirect(url_for('main.profile', username=user_form.username.data))
+  
+  if team_form.validate_on_submit():
+    pass
+  return render_template('settings.html', user=user, user_form=user_form, team_form=team_form, game_form=game_form)
 
 
 @main.route('/create-team', methods=['GET', 'POST'])
