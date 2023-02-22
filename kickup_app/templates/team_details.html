@@ -28,6 +28,13 @@
     {% endfor %}
   </ol>
 
+  {% if current_user in team.players %}
+  <fieldset>
+    <legend>Delete Team</legend>
+    <button><a href="/delete-team/{{ team.id }}">Delete Team</a></button>
+  </fieldset>
+  {% endif %}
+
 
   <h3>Current Roster</h3>
   <ol>

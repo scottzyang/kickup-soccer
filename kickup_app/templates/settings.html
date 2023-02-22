@@ -56,7 +56,7 @@
 <form action="/profile/{{user.username}}/settings" method="POST">
   {{ team_form.csrf_token }}
   <fieldset>
-    <legend>Update User Profile</legend>
+    <legend>Update Team Information</legend>
     {% if current_user.id == user.id %}
     {% if current_user.is_authenticated %}
       {{ team_form.team_name.label }}
@@ -81,4 +81,9 @@
 </form>
 
 <h3>Update Current Games</h3>
+
+<fieldset>
+  <legend>Delete Profile</legend>
+  <button><a href="/delete-profile/{{user.username}}">Delete Profile</a></button>
+</fieldset>
 {% endblock %}

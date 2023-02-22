@@ -29,7 +29,7 @@ def settings(username):
   game_form = GameForm()
 
   if user_form.validate_on_submit():
-    user.username = user.username.data if user_form.username.data == '' else user_form.username.data
+    user.username = user.username if user_form.username.data == '' else user_form.username.data
     user.profile_picture = user.profile_picture if user_form.profile_picture.data == '' else user_form.profile_picture.data
     user.first_name = user.first_name if user_form.first_name.data == '' else user_form.first_name.data
     user.last_name = user.last_name if user_form.last_name.data == '' else user_form.last_name.data
@@ -39,9 +39,29 @@ def settings(username):
     return redirect(url_for('main.profile', username=user_form.username.data))
   
   if team_form.validate_on_submit():
-    pass
+    user_team.team_name = user_team.team_name if team_form.team_name.data == '' else team_form.team_name.data
+    user_team.logo_url = user_team.logo_url if team_form.logo_url.data == '' else team_form.logo_url.data
+    db.session.commit()
+    flash('Team Updated.')
+    return redirect(url_for('main.team_details', team_id=user_team.id))
   return render_template('settings.html', user=user, user_form=user_form, team_form=team_form, game_form=game_form)
 
+@main.route('/delete-profile/<username>', methods=["GET", "POST"])
+@login_required
+def delete_profile(username):
+  user = User.query.filter_by(username=username).one()
+  db.session.delete(user)
+  db.session.commit()
+  logout_user()
+  return redirect(url_for('main.homepage'))
+
+@main.route('/delete-team/<team_id>', methods=["GET", "POST"])
+@login_required
+def delete_team(team_id):
+  team = Team.query.get(team_id)
+  db.session.delete(team)
+  db.session.commit()
+  return redirect(url_for('main.teams_list'))
 
 @main.route('/create-team', methods=['GET', 'POST'])
 @login_required
@@ -111,7 +131,6 @@ def games_list():
 @main.route('/join-team/<team_id>', methods=['GET', 'POST'])
 @login_required
 def join_team(team_id):
-  print(team_id)
   user = User.query.filter_by(username=current_user.username).one()
   join_team = Team.query.filter_by(id=team_id).one()
   join_team.players.append(user)
