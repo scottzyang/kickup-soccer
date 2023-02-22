@@ -5,6 +5,7 @@
 <h1>Homepage test</h1>
 <div class="homepage-style">
   <section class="user-create">
+    {% if current_user.is_authenticated %}
     <h2>Users</h2>  
     <a href="/profile/{{current_user.username}}">View Profile</a>
   </section>
@@ -20,6 +21,11 @@
     <section class="view-users">
       <h2>Players</h2>
       <a href="/players">View Players</a>
+    {% else %}
+      <a href="/signup">Sign Up</a>
+      <h2>Already have an account?</h2>
+      <a href="/login">Login</a>
+    {% endif %}
     </section>
   </div>
 </div>
