@@ -30,7 +30,7 @@ class TeamForm(FlaskForm):
 
 class GameForm(FlaskForm):
     '''Form to create new game'''
-    name = StringField('Game Title', validators=[DataRequired(), Length(min=3, max=100)])
+    name = StringField('Game Title', validators=[Length(min=3, max=100)])
     location = StringField('Game Location', validators=[DataRequired(), Length(min=3, max=100)])
     date = DateField('Date', validators=[DataRequired()])
     time = TimeField('Time', validators=[DataRequired()])

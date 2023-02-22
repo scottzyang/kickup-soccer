@@ -63,6 +63,14 @@ def delete_team(team_id):
   db.session.commit()
   return redirect(url_for('main.teams_list'))
 
+@main.route('/delete-game/<game_id>', methods=["GET", "POST"])
+@login_required
+def delete_game(game_id):
+  game = Game.query.get(game_id)
+  db.session.delete(game)
+  db.session.commit()
+  return redirect(url_for('main.games_list'))
+
 @main.route('/create-team', methods=['GET', 'POST'])
 @login_required
 def create_team():
@@ -108,7 +116,21 @@ def create_game():
 @login_required
 def game_details(game_id):
   game = Game.query.get(game_id)
-  return render_template('game_details.html', game=game)
+  form = GameForm()
+
+  if form.validate_on_submit():
+    print('hello 2')
+    game.name = game.name if form.name.data == '' else form.name.data
+    game.location = game.location if form.location.data == '' else form.location.data
+    game.date = game.date if form.date.data == '' else form.date.data
+    game.time = game.time if form.time.data == '' else form.time.data
+    game.home_team = game.home_team if form.home_team.data == '' else form.home_team.data
+    game.away_team = game.away_team if form.away_team.data == '' else form.away_team.data
+    db.session.commit()
+    return redirect(url_for('main.game_details', game_id=game.id))
+  else:
+    print('form not validated')
+  return render_template('game_details.html', game=game, form=form)
 
 @main.route('/players', methods=['GET'])
 @login_required
