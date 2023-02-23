@@ -1,0 +1,26 @@
+USER:
+✅ Create Profile/Sign Up  (DONE)
+✅ View players from list, and individual profiles
+✅ Update player details when logged in
+✅ Add team to players profile
+✅ Delete profile
+
+TEAM:
+✅ Create Team (DONE)
+✅ View team profile from list, and individual Teams
+✅ Update team info, if user was the one who Created
+✅ Show players that were added on team. 
+✅ Delete team info, if user was the one who Created
+✅ Show upcoming matches from list of games where team appears as away or home
+
+Game:
+✅ Create game
+✅ View game details from list
+✅ Update game info, if user was the one who Created
+✅ Add team_id's to game to determine who is playing who
+✅ Delete game info if user was the one who Created
+
+Other Tasks:
+[] Styling
+[] Tests
+[] Seed game data

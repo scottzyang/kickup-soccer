@@ -119,7 +119,6 @@ def game_details(game_id):
   form = GameForm()
 
   if form.validate_on_submit():
-    print('hello 2')
     game.name = game.name if form.name.data == '' else form.name.data
     game.location = game.location if form.location.data == '' else form.location.data
     game.date = game.date if form.date.data == '' else form.date.data
