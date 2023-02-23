@@ -29,7 +29,7 @@ class User(UserMixin, db.Model):
     first_name = db.Column(db.String(80), nullable=False)
     last_name = db.Column(db.String(80), nullable=False)
     birth_date = db.Column(db.Date)
-    position = db.Column(db.Enum(Position))
+    position = db.Column(db.Enum(Position, name="position_enum"))
     team_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=True)
 
     # user linkage to team
