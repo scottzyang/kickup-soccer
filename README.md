@@ -20,7 +20,10 @@ Perform CRUD operations with user account, teams, and games.
 - Create new team, update, join a registered team, or delete current team.
 - Set up, modify, or delete games between registered teams.
 
-View existing teams and players.
+Other functionality:
+- Users can login with previously created account information.
+- Password hashing allows for encrypted and secure passwords. 
+- Username/Team name validation to ensure unique names are created.
 - Teams list displays teams and current roster count.
 - Players list displays players and current position.
 - Team profiles display current roster list and upcoming game schedule. 
@@ -50,3 +53,8 @@ To run tests, run the following command:
   python3 -m unittest discover
 ```
 
+## Future Iterations
+
+- Styling to provide a more friendly user interface and user experience.
+- Utilize a map/location API to set up geographically accurate game locations.
+- Implement functionality to allow users to RSVP for upcoming games.
