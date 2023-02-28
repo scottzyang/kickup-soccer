@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1 class="text-xl">Homepage</h1>
+<!-- <h1 class="text-xl">Homepage</h1> -->
 <div class="homepage-style">
   <section class="user-create">
     {% if current_user.is_authenticated %}
@@ -22,9 +22,19 @@
       <h2>Players</h2>
       <a href="/players">View Players</a>
     {% else %}
-      <a href="/signup">Sign Up</a>
-      <h2>Already have an account?</h2>
-      <a href="/login">Login</a>
+    <img class="header-image w-screen h-screen" src="https://i.pinimg.com/originals/30/28/79/302879c6f08ecd109011a3e13f4f81e3.jpg" alt="photo of soccer player legs"/>
+    <section class="flex justify-around h-screen items-center">
+      <section class="flex flex-col items-center justify-center border-solid border-4 border-white w-96 h-96 rounded-tl-3xl bg-black opacity-80 drop-shadow-xl">
+        <h2 class="text-3xl m-2">New?</h2>
+        <img src="https://images.pexels.com/photos/7271269/pexels-photo-7271269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="photo of player putting on cleats">
+        <a class="font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 m-4" href="/signup">Sign Up</a>
+      </section>
+      <section class="flex flex-col items-center justify-center border-solid border-4 border-white w-96 h-96 rounded-br-3xl bg-black opacity-80 drop-shadow-xl">
+        <h2 class="text-3xl m-2">Game On</h2>
+        <img src="https://images.pexels.com/photos/10923070/pexels-photo-10923070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="photo of players foot on ball"/>
+        <a class="font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 m-4" href="/login">Login</a>
+      </section>
+    </section>
     {% endif %}
     </section>
   </div>

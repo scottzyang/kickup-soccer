@@ -5,10 +5,10 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
+    <body class="bg-black text-white">
         <!-- Add base html here. -->
         <div id="content">
-            <nav>
+            <!-- <nav>
                 <a href="/">Home</a>
                 <div>
                     {% if current_user.is_authenticated %}
@@ -21,7 +21,7 @@
                     <a href="/login">Log In</a>
                     {% endif %}
                 </div>
-            </nav>
+            </nav> -->
         
         {% block content %}{% endblock %}
     </body>
