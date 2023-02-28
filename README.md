@@ -1,7 +1,7 @@
 
 # KickUp
 
-KickUp is a web applicaiton that allows users to set up pick up soccer games between different teams with other registered users. 
+KickUp is a web application that allows users to set up pick up soccer games between different teams with other registered users. 
 
 Users are able to sign up and create an account, create and join teams, and set up games. KickUp was created using Flask and SQLAlchemy. 
 
