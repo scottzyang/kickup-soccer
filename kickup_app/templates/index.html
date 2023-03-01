@@ -9,16 +9,14 @@
         <!-- Add base html here. -->
         <div id="content">
             <nav>
-                <a href="/">Home</a>
                 <div>
                     {% if current_user.is_authenticated %}
+                    <a href="/">Home</a>
                     <a href="/profile/{{current_user.username}}">Profile</a>
                     <a href="/create-team">Create Team</a>
                     <a href="/create-game">Setup a Game</a>
                     <a href="/logout">Log Out</a>
-                    {% else %}
-                    <a href="/signup">Sign Up</a>
-                    <a href="/login">Log In</a>
+            
                     {% endif %}
                 </div>
             </nav>
