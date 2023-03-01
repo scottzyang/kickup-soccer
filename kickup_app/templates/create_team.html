@@ -1,6 +1,7 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<img class="fixed homepage-image w-screen h-screen opacity-50" src="https://images.unsplash.com/photo-1516731566880-919c39006c9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="soccer field background"/> 
 
 <h1>Create Team</h1>
 
@@ -10,7 +11,7 @@
       <legend>Enter your profile information below:</legend>
 
       {{ form.team_name.label }}
-      {{ form.team_name }}
+      <p class="text-2xl mb-4 text-black">{{ form.team_name }}</p>
       <ul>
       {% for error in form.team_name.errors %}
           <li class="error">{{ error }}</li>
@@ -18,14 +19,14 @@
       </ul>
 
       {{ form.logo_url.label }}
-      {{ form.logo_url }}
+      <p class="text-2xl mb-4 text-black">{{ form.logo_url }}</p>
       <ul>
       {% for error in form.logo_url.errors %}
           <li class="error">{{ error }}</li>
       {% endfor %}
       </ul>
 
-      {{ form.submit }}
+      <p class="flex justify-center font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 w-60 mt-8">{{ form.submit }}</p>
 
   </fieldset>
 </form>

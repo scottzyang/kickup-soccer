@@ -1,6 +1,8 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<img class="fixed homepage-image w-screen h-screen opacity-50" src="https://images.unsplash.com/photo-1516731566880-919c39006c9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="soccer field background"/> 
+
 
 <h1>Create Game</h1>
 
@@ -9,7 +11,7 @@
   <fieldset>
       <legend>Enter your game information below:</legend>
       {{ form.name.label }}
-      {{ form.name }}
+      <p class="text-2xl mb-4 text-black">{{ form.name }}</p>
       <ul>
         {% for error in form.name.errors %}
             <li class="error">{{ error }}</li>
@@ -17,7 +19,7 @@
         </ul>
 
       {{ form.location.label }}
-      {{ form.location }}
+      <p class="text-2xl mb-4 text-black">{{ form.location }}</p>
       <ul>
       {% for error in form.location.errors %}
           <li class="error">{{ error }}</li>
@@ -26,7 +28,7 @@
 
 
       {{ form.date.label }}
-      {{ form.date }}
+      <p class="text-2xl mb-4 text-black">{{ form.date }}</p>
       <ul>
       {% for error in form.time.errors %}
           <li class="error">{{ error }}</li>
@@ -34,7 +36,7 @@
       </ul>
 
       {{ form.time.label }}
-      {{ form.time }}
+      <p class="text-2xl mb-4 text-black">{{ form.time }}</p>
       <ul>
       {% for error in form.time.errors %}
           <li class="error">{{ error }}</li>
@@ -42,7 +44,7 @@
       </ul>
 
       {{ form.home_team.label }}
-      {{ form.home_team }}
+      <p class="text-2xl mb-4 text-black">{{ form.home_team }}</p>
       <ul>
       {% for error in form.home_team.errors %}
           <li class="error">{{ error }}</li>
@@ -50,14 +52,14 @@
       </ul>
 
       {{ form.away_team.label }}
-      {{ form.away_team }}
+      <p class="text-2xl mb-4 text-black">{{ form.away_team }}</p>
       <ul>
       {% for error in form.away_team.errors %}
           <li class="error">{{ error }}</li>
       {% endfor %}
       </ul>
 
-      {{ form.submit }}
+      <p class="flex justify-center font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 w-60 mt-8">{{ form.submit }}</p>
 
   </fieldset>
 </form>
