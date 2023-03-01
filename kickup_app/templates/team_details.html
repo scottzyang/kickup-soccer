@@ -1,60 +1,58 @@
 {% extends 'index.html' %}
 
 {% block content %}
-
-<h1>{{ team.team_name }}</h1>
-
+<img class="fixed homepage-image w-screen h-screen opacity-50" src="https://images.unsplash.com/photo-1516731566880-919c39006c9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="soccer field background"/> 
+<h1 class="text-center m-8 text-6xl font-serif">{{ team.team_name }}</h1>
 <section>
-  <img src="{{team.logo_url}}" width="250" height="250"/>
-  <p><strong>Date Formed: </strong>{{ team.date_formed.strftime('%b, %d, %Y') }}</p>
-
-  <h2>Upcoming Games: </h2 >
-  {% set all_games = [] %}
-  {% for game in team.away_games %}
-  {{ all_games.append(game) or ""}}
-  {% endfor %}  
-  {% for game in team.home_games %}
-  {{ all_games.append(game) or ""}}
-  {% endfor %}
-  <ol>
-    {% for game in all_games %}
-
-    <li>
-      <p>Date: {{game.date.strftime("%b, %d, %Y")}}</p>
-      <p>Time: {{game.time.strftime('%I:%M %p')}}</p>
-      <p>Location: {{game.location}}</p>
-    </li>
+  <section class="flex justify-evenly mt-8">
+    <section class="flex flex-col items-start">
+      <img class="w-80" src="{{team.logo_url}}" alt="team logo"/>
+      <p class="m-2"><strong>Date Formed: </strong>{{ team.date_formed.strftime('%b, %d, %Y') }}</p>
+      <a class="font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 m-4 w-24" href="/join-team/{{team.id}}"><button>Join Team!</button></a>
+    </section>
+    <section>
+      <h2 class="text-4xl font-serif m-2">Upcoming Games: </h2 >
+        {% set all_games = [] %}
+        {% for game in team.away_games %}
+        {{ all_games.append(game) or ""}}
+        {% endfor %}  
+        {% for game in team.home_games %}
+        {{ all_games.append(game) or ""}}
+        {% endfor %}
+        <ol class="grid grid-cols-2 gap-6">
+          {% for game in all_games %}
+      
+          <li>
+            <p>Date: {{game.date.strftime("%b, %d, %Y")}}</p>
+            <p>Time: {{game.time.strftime('%I:%M %p')}}</p>
+            <p>Location: {{game.location}}</p>
+          </li>
+        
+          {% endfor %}
+        </ol>
+    </section>
+  </section>
+  <section class="text-center"> 
+    <h3 class="text-4xl font-serif m-2">Current Roster</h3>
+    <ol class="grid grid-cols-2 gap-2 w-96 m-auto">
+      {% for player in team.players %}
   
-    {% endfor %}
-  </ol>
-
+      <li>
+        <a href="/profile/{{ player.username }}">
+          <p>Name: {{player.first_name}} {{player.last_name}}</p>
+          <p>Position: {{ player.position }}</p>
+        </a>
+      </li>
+    
+      {% endfor %}
+    </ol>
+  </section>
   {% if current_user in team.players %}
-  <fieldset>
-    <legend>Delete Team</legend>
-    <button><a href="/delete-team/{{ team.id }}">Delete Team</a></button>
+  <fieldset class="flex flex-col items-center mt-6">
+    <p>Delete Team</p>
+    <a  class="font-serif border-solid border-8 border-amber-400 bg-amber-400 text-black hover:opacity-50 m-4" href="/delete-team/{{ team.id }}">Delete Team</a>
   </fieldset>
   {% endif %}
-
-
-  <h3>Current Roster</h3>
-  <ol>
-    {% for player in team.players %}
-
-    <li>
-      <a href="/profile/{{ player.username }}">
-        <p>Name: {{player.first_name}} {{player.last_name}}</p>
-        <p>Position: {{ player.position }}</p>
-      </a>
-    </li>
-  
-    {% endfor %}
-  </ol>
-
-
-  <!-- <form action="/join-team/{{team.id}}">
-    <input type="submit" value="Join Team!" />
-  </form> -->
-  <a href="/join-team/{{team.id}}"><button>Join Team!</button></a>
 </section>
 
 {% endblock %}

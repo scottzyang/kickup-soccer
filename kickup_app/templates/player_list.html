@@ -9,9 +9,8 @@
     {% for player in players %}
     <li class="flex flex-col items-center justify-center border-solid border-4 border-white w-60 h-60 rounded-tl-3xl bg-black opacity-80 drop-shadow-xl">
       <a class="w-40"href="/profile/{{ player.username }}">
+        <p class="font-bold text-center text-lg mb-2">{{ player.first_name }} {{ player.last_name }}</p>
         <img src="{{player.profile_picture}}" alt="team logo">
-        <p class="mt-2"><strong>Name: </strong></p>
-        <p>{{ player.first_name }} {{ player.last_name }}</p>
         <p class="mt-2"><strong>Position: </strong></p>
         <p>{{ player.position }}</p>
       </a>
