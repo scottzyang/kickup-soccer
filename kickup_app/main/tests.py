@@ -94,8 +94,8 @@ class MainTests(unittest.TestCase):
 
         response_text = response.get_data(as_text=True)
         self.assertIn('Login Page', response_text)
-        self.assertIn('User Name', response_text)
-        self.assertIn('Sign Up', response_text)
+        self.assertIn('<p class="text-white"><label for="username">Username:</label></p>', response_text)
+        self.assertIn('KickUp Soccer', response_text)
 
     def test_profile_logged_in(self):
         '''Test that profile endpoint displays user data'''
@@ -107,9 +107,9 @@ class MainTests(unittest.TestCase):
 
         response_text = response.get_data(as_text=True)
         self.assertIn('scottyang', response_text)
-        self.assertIn('<p><strong>Birthday: </strong>Aug, 31, 1996</p>', response_text)
-        self.assertIn('<button><a href="/profile/scottyang/settings">Settings</a></button>', response_text)
-        self.assertIn('<p><strong>Current Team: </strong>\n    \n      Firebenders\n    \n  </p>', response_text)
+        self.assertIn('<p class="m-4 text-xl"><strong>Birthday: </strong>Aug, 31, 1996</p>', response_text)
+        self.assertIn('<a class="font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 m-4 w-full" href="/profile/scottyang/settings">Settings</a>', response_text)
+        self.assertIn('<p class="m-4 text-xl"><strong>Current Team: </strong>\n        \n          Firebenders\n        \n      </p>', response_text)
 
     def test_team_logged_out(self):
         '''Test that team profile redirects to login'''
@@ -120,8 +120,8 @@ class MainTests(unittest.TestCase):
 
         response_text = response.get_data(as_text=True)
         self.assertIn('Login Page', response_text)
-        self.assertIn('User Name', response_text)
-        self.assertIn('Sign Up', response_text)
+        self.assertIn('<p class="text-white"><label for="username">Username:</label></p>', response_text)
+        self.assertIn('KickUp Soccer', response_text)
 
     def test_team_logged_in(self):
         '''Test that team profile redirects to login'''
@@ -165,7 +165,7 @@ class MainTests(unittest.TestCase):
         response_text = response.get_data(as_text=True)
         self.assertIn('Sign Up', response_text)
         self.assertIn('Login', response_text)
-        self.assertIn('Already have an account?', response_text)
+        self.assertIn('Game On!', response_text)
 
     def test_delete_team(self):
         '''Test that team can be deleted and redirect'''
@@ -176,7 +176,7 @@ class MainTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
         response_text = response.get_data(as_text=True)
-        self.assertIn('All registered Teams', response_text)
+        self.assertIn('Registered Teams', response_text)
 
     def test_player_list(self):
         '''Test that player list displays players'''
@@ -187,7 +187,7 @@ class MainTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
         response_text = response.get_data(as_text=True)
-        self.assertIn('<p><strong>Name: </strong>scott yang</p>', response_text)
+        self.assertIn('<p class="font-bold text-center text-lg mb-2">scott yang</p>', response_text)
 
     def test_teams_list(self):
         '''Test that teams list displays teams'''
