@@ -1,24 +1,30 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<img class="homepage-image w-screen h-screen opacity-50" src="https://images.unsplash.com/photo-1516731566880-919c39006c9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="soccer field background"/> 
 
-<h1>{{ user.username }}</h1>
-<h2><strong>Position: </strong>{{ user.position }}</h2>
+<section class="flex justify-center items-center h-screen">
 
-<section>
-  <img src="{{user.profile_picture}}" width="250" height="250"/>
-  <p><strong>Name: </strong>{{ user.first_name }} {{ user.last_name }}</p>
-  <p><strong>Birthday: </strong>{{ user.birth_date.strftime('%b, %d, %Y') }}</p>
-  <p><strong>Current Team: </strong>
-    {% if not user.team %}
-      None
-    {% else %}
-      {{ user.team }}
-    {% endif %}
-  </p>
-  {% if current_user.id == user.id %}
-  <button><a href="/profile/{{user.username}}/settings">Settings</a></button>
-  {% endif %}
+  <section class="border-solid border-4 border-white w-2/6 h-5/6 rounded-2xl bg-black opacity-80 drop-shadow-xl">
+    <h1 class="text-6xl font-serif m-2">{{ user.first_name }} {{ user.last_name }}</h1>
+    <h2 class="m-2"><strong>Position: </strong>{{ user.position }}</h2>
+    <img class="w-full border-solid border-4 border-white" src="{{user.profile_picture}}"/>
+    <section class="w-80 m-auto">
+      <p class="m-4 text-xl"><strong>Username: </strong>{{ user.username }}</p>
+      <p class="m-4 text-xl"><strong>Birthday: </strong>{{ user.birth_date.strftime('%b, %d, %Y') }}</p>
+      <p class="m-4 text-xl"><strong>Current Team: </strong>
+        {% if not user.team %}
+          None
+        {% else %}
+          {{ user.team }}
+        {% endif %}
+      </p>
+      {% if current_user.id == user.id %}
+      <a class="font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 m-4 w-full" href="/profile/{{user.username}}/settings">Settings</a>
+      {% endif %}
+    </section>
+  </section>
 </section>
+
 
 {% endblock %}

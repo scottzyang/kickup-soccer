@@ -3,10 +3,6 @@ div.homepage-style {
   display: 'flex';
 }
 
-.hi {
-  background-color: red;
-}
-
 .header-image {
   position: absolute;
   z-index: -1;
