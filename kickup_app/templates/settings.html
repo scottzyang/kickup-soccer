@@ -1,89 +1,89 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<img class="homepage-image w-screen h-screen opacity-50" src="https://images.unsplash.com/photo-1516731566880-919c39006c9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="soccer field background"/> 
+
 <h1>Settings</h1>
-<form action="/profile/{{user.username}}/settings" method="POST">
-  {{ user_form.csrf_token }}
-  <fieldset>
-    <legend>Update User Profile</legend>
-    {% if current_user.id == user.id %}
-    {% if current_user.is_authenticated %}
-      {{ user_form.username.label }}
-      {{ user_form.username }}
-      <ul>
-      {% for error in user_form.username.errors %}
-        <li class="error">{{ error }}</li>
-      {% endfor %}
-      </ul>
+<section class="flex justify-evenly h-screen items-center">
+  <form action="/profile/{{user.username}}/settings" method="POST">
+    {{ user_form.csrf_token }}
+    <fieldset class="m-8">
+      <legend class="font-serif text-white text-3xl inset-x-0 top-0 h-16">Update User Profile</legend>
+      {% if current_user.id == user.id %}
+      {% if current_user.is_authenticated %}
+        <p class="text-white">{{ user_form.username.label }}</p>
+        <p class="text-2xl mb-4 text-black">{{ user_form.username }}</p>
+        <ul>
+        {% for error in user_form.username.errors %}
+          <li class="error text-white">{{ error }}</li>
+        {% endfor %}
+        </ul>
 
-      {{ user_form.profile_picture.label }}
-      {{ user_form.profile_picture }}
-      <ul>
-      {% for error in user_form.profile_picture.errors %}
-          <li class="error">{{ error }}</li>
-      {% endfor %}
-      </ul>
+          <p class="text-white">{{ user_form.profile_picture.label }}</p>
+          <p class="text-2xl mb-4 text-black">{{ user_form.profile_picture }}</p>
+        <ul>
+        {% for error in user_form.profile_picture.errors %}
+            <li class="error text-white">{{ error }}</li>
+        {% endfor %}
+        </ul>
 
-      {{ user_form.first_name.label }}
-      {{ user_form.first_name }}
-      <ul>
-      {% for error in user_form.first_name.errors %}
-          <li class="error">{{ error }}</li>
-      {% endfor %}
-      </ul>
+          <p class="text-white">{{ user_form.first_name.label }}</p>
+          <p class="text-2xl mb-4 text-black">{{ user_form.first_name }}</p>
+        <ul>
+        {% for error in user_form.first_name.errors %}
+            <li class="error text-white">{{ error }}</li>
+        {% endfor %}
+        </ul>
 
-      {{ user_form.last_name.label }}
-      {{ user_form.last_name}}
-      <ul>
-      {% for error in user_form.last_name.errors %}
-          <li class="error">{{ error }}</li>
-      {% endfor %}
-      </ul>
+          <p class="text-white">{{ user_form.last_name.label }}</p>
+          <p class="text-2xl mb-4 text-black">{{ user_form.last_name}}</p>
+        <ul>
+        {% for error in user_form.last_name.errors %}
+            <li class="error text-white">{{ error }}</li>
+        {% endfor %}
+        </ul>
 
-      {{ user_form.position.label }}
-      {{ user_form.position}}
-      <ul>
-      {% for error in user_form.position.errors %}
-          <li class="error">{{ error }}</li>
-      {% endfor %}
-      </ul>
-      {{ user_form.submit }}
-    {% endif %}
-    {% endif %}
-    </fieldset>
-</form>
-<br/>
-<form action="/profile/{{user.username}}/settings" method="POST">
-  {{ team_form.csrf_token }}
-  <fieldset>
-    <legend>Update Team Information</legend>
-    {% if current_user.id == user.id %}
-    {% if current_user.is_authenticated %}
-      {{ team_form.team_name.label }}
-      {{ team_form.team_name }}
-      <ul>
-      {% for error in team_form.team_name.errors %}
-        <li class="error">{{ error }}</li>
-      {% endfor %}
-      </ul>
-
-      {{ team_form.logo_url.label }}
-      {{ team_form.logo_url }}
-      <ul>
-      {% for error in team_form.logo_url.errors %}
-          <li class="error">{{ error }}</li>
-      {% endfor %}
-      </ul>
-      {{ team_form.submit }}
-    {% endif %}
-    {% endif %}
-    </fieldset>
-</form>
-
-<h3>Update Current Games</h3>
-
-<fieldset>
-  <legend>Delete Profile</legend>
-  <button><a href="/delete-profile/{{user.username}}">Delete Profile</a></button>
+          <p class="text-white">{{ user_form.position.label }}</p>
+          <p class="text-lg mb-4 text-black">{{ user_form.position}}</p>
+        <ul>
+        {% for error in user_form.position.errors %}
+            <li class="error text-white">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        <p class="flex justify-center font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 w-auto mt-8">{{ user_form.submit }}</p>
+      {% endif %}
+      {% endif %}
+      </fieldset>
+  </form>
+  <form action="/profile/{{user.username}}/settings" method="POST">
+    {{ team_form.csrf_token }}
+    <fieldset class="m-8">
+      <legend class="font-serif text-white text-3xl inset-x-0 top-0 h-16">Update Team Information</legend>
+      {% if current_user.id == user.id %}
+      {% if current_user.is_authenticated %}
+        <p class="text-white">{{ team_form.team_name.label }}</p>
+        <p class="text-lg mb-4 text-black">{{ team_form.team_name }}</p>
+        <ul>
+        {% for error in team_form.team_name.errors %}
+          <li class="error text-white">{{ error }}</li>
+        {% endfor %}
+        </ul>
+  
+        <p class="text-white">{{ team_form.logo_url.label }}</p>
+        <p class="text-lg mb-4 text-black">{{ team_form.logo_url }}</p>
+        <ul>
+        {% for error in team_form.logo_url.errors %}
+            <li class="error text-white">{{ error }}</li>
+        {% endfor %}
+        </ul>
+        <p class="flex justify-center font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 w-auto mt-8">{{ team_form.submit }}</p>
+      {% endif %}
+      {% endif %}
+      </fieldset>
+  </form>
+</section>
+<fieldset class="flex flex-col items-center">
+  <p>Hanging up the boots?</p>
+  <a class="font-serif border-solid border-8 border-amber-400 bg-amber-400 text-black hover:opacity-50 m-4" href="/delete-profile/{{user.username}}">Delete Profile</a>
 </fieldset>
 {% endblock %}
