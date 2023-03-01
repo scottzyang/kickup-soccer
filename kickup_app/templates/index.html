@@ -9,14 +9,17 @@
         <!-- Add base html here. -->
         <div id="content">
             <nav>
-                <div>
+                <div class="flex justify-evenly">
                     {% if current_user.is_authenticated %}
-                    <a href="/">Home</a>
-                    <a href="/profile/{{current_user.username}}">Profile</a>
-                    <a href="/create-team">Create Team</a>
-                    <a href="/create-game">Setup a Game</a>
-                    <a href="/logout">Log Out</a>
-            
+                    <a class="text-xl" href="/">Home</a>
+                    <a class="text-xl" href="/profile/{{current_user.username}}">Profile</a>
+                    <a class="text-xl" href="/create-team">Create Team</a>
+                    <a class="text-xl" href="/create-game">Setup a Game</a>
+                    <a class="text-xl" href="/logout">Log Out</a>
+                    {% else %}
+                    <a class="text-xl" href="/">Home</a>
+                    <a class="text-xl" href="/signup">Signup</a>
+                    <a class="text-xl" href="/login">Login</a>
                     {% endif %}
                 </div>
             </nav>

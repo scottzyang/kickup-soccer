@@ -135,7 +135,7 @@ class MainTests(unittest.TestCase):
         response_text = response.get_data(as_text=True)
         self.assertIn('Airbenders', response_text)
         self.assertIn('Upcoming Games:', response_text)
-        self.assertIn('<a href="/profile/scottyang">Profile</a>', response_text)
+        self.assertIn('<a class="text-xl" href="/profile/scottyang">Profile</a>', response_text)
 
     def test_update_profile(self):
         '''Test that profile update works'''

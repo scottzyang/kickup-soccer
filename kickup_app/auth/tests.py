@@ -54,24 +54,22 @@ class AuthTest(TestCase):
         db.drop_all()
         db.create_all()
 
-    # def test_signup(self):
-    #     create_user()
-        
-    #     form_data = {
-    #         'username': 'scottzyang',
-    #         'password': 'password',
-    #         'profile_picture': "https://picsum.photos/200/300",
-    #         "first_name": "scott", 
-    #         "last_name": "yang",
-    #         "birth_date": datetime(1996, 8, 31),   
-    #         "position": Position.ATTACKER,
-    #     }
+    def test_signup(self):        
+        form_data = {
+            'username': 'scottzyang',
+            'password': 'password',
+            'profile_picture': "https://picsum.photos/200/300",
+            "first_name": "scott", 
+            "last_name": "yang",
+            "birth_date": datetime(1996, 8, 31),   
+            "position": Position.ATTACKER,
+        }
 
-    #     self.app.post('/signup', data=form_data)
+        self.app.post('/signup', data=form_data)
 
-    #     new_user = User.query.filter_by(username="scottzyang").one()
-    #     self.assertIsNotNone(new_user)
-    #     self.assertEqual(new_user.username, 'scottzyang')
+        new_user = User.query.filter_by(username="scottzyang").one()
+        self.assertIsNotNone(new_user)
+        self.assertEqual(new_user.username, 'scottzyang')
 
 
     def test_signup_existing_user(self):

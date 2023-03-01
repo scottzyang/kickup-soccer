@@ -20,7 +20,7 @@
   <fieldset>
       <legend>Update Game Information:</legend>
       {{ form.name.label }}
-      {{ form.name }}
+      <p class="text-2xl mb-4 text-black">{{ form.name }}</p>
       <ul>
         {% for error in form.name.errors %}
             <li class="error">{{ error }}</li>
@@ -34,7 +34,7 @@
       </ul>
 
       {{ form.location.label }}
-      {{ form.location }}
+      <p class="text-2xl mb-4 text-black">{{ form.location }}</p>
       <ul>
       {% for error in form.location.errors %}
           <li class="error">{{ error }}</li>
@@ -42,7 +42,7 @@
       </ul>
 
       {{ form.date.label }}
-      {{ form.date }}
+      <p class="text-2xl mb-4 text-black">{{ form.date }}</p>
       <ul>
       {% for error in form.time.errors %}
           <li class="error">{{ error }}</li>
@@ -50,7 +50,7 @@
       </ul>
 
       {{ form.time.label }}
-      {{ form.time }}
+      <p class="text-2xl mb-4 text-black">{{ form.time }}</p>
       <ul>
       {% for error in form.time.errors %}
           <li class="error">{{ error }}</li>
@@ -58,7 +58,7 @@
       </ul>
 
       {{ form.home_team.label }}
-      {{ form.home_team }}
+      <p class="text-2xl mb-4 text-black">{{ form.home_team }}</p>
       <ul>
       {% for error in form.home_team.errors %}
           <li class="error">{{ error }}</li>
@@ -66,19 +66,21 @@
       </ul>
 
       {{ form.away_team.label }}
-      {{ form.away_team }}
+      <p class="text-2xl mb-4 text-black">{{ form.away_team }}</p>
       <ul>
       {% for error in form.away_team.errors %}
           <li class="error">{{ error }}</li>
       {% endfor %}
       </ul>
 
-      {{ form.submit }}
+      <p class="flex justify-center font-serif border-solid border-8 border-white bg-white text-black hover:opacity-50 w-60 mt-8">{{ form.submit }}</p>
+
 
   </fieldset>
 </form>
+<br/>
 {% if current_user.team == game.home_team or current_user.team == game.away_team %}
-  <button><a href="/delete-game/{{game.id}}">Delete Game</a></button>
+  <a class="font-serif border-solid border-8 border-amber-400 bg-amber-400 text-black hover:opacity-50 m-8" href="/delete-game/{{game.id}}">Delete Game</a>
 {% endif %}
 
 {% endblock %}
