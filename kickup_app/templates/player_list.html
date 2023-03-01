@@ -1,18 +1,23 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<h1>All registered players</h1>
+<img class="fixed homepage-image w-screen h-screen opacity-50" src="https://images.unsplash.com/photo-1516731566880-919c39006c9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="soccer field background"/> 
 
-<ol>
-  {% for player in players %}
-  <li>
-    <a href="/profile/{{ player.username }}">
-      <p><strong>Name: </strong>{{ player.first_name }} {{ player.last_name }}</p>
-      <p><strong>Position: </strong>{{ player.position }}</p>
-     </a>
-  </li>
-  {% endfor %}
-</ol>
-
+<h1 class="text-center m-8 text-3xl font-serif">Registered Players</h1>
+<section class="flex justify-center" >
+  <ol class="grid grid-cols-4 gap-6">
+    {% for player in players %}
+    <li class="flex flex-col items-center justify-center border-solid border-4 border-white w-60 h-60 rounded-tl-3xl bg-black opacity-80 drop-shadow-xl">
+      <a class="w-40"href="/profile/{{ player.username }}">
+        <img src="{{player.profile_picture}}" alt="team logo">
+        <p class="mt-2"><strong>Name: </strong></p>
+        <p>{{ player.first_name }} {{ player.last_name }}</p>
+        <p class="mt-2"><strong>Position: </strong></p>
+        <p>{{ player.position }}</p>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
 
 {% endblock %}

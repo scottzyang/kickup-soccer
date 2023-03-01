@@ -1,18 +1,23 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<h1>All registered Teams</h1>
+<img class="fixed homepage-image w-screen h-screen opacity-50" src="https://images.unsplash.com/photo-1516731566880-919c39006c9d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="soccer field background"/> 
 
-<ol>
-  {% for team in teams %}
-  <li>
-    <a href="/team-details/{{ team.id }}">
-      <p><strong>Team Name: </strong>{{ team.team_name }}</p>
-      <p><strong>Roster Count: </strong>{{ team.players|length }}</p>
-     </a>
-  </li>
-  {% endfor %}
-</ol>
+<h1 class="text-center m-8 text-3xl font-serif">Registered Teams</h1>
+<section class="flex justify-center" >
 
-
+  <ol class="grid grid-cols-4 gap-6">
+    {% for team in teams %}
+    <li class="flex flex-col items-center justify-center border-solid border-4 border-white w-60 h-60 rounded-tl-3xl bg-black opacity-80 drop-shadow-xl">
+      <a class="w-40" href="/team-details/{{ team.id }}">
+        <img src="{{team.logo_url}}" alt="team logo">
+        <p class="mt-2"><strong>Team Name: </strong></p>
+        <p>{{ team.team_name }}</p>
+        <p class="mt-2"><strong>Roster Count: </strong></p>
+        <p>{{ team.players|length }}</p>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
 {% endblock %}

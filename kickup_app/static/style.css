@@ -3,6 +3,7 @@ div.homepage-style {
   display: 'flex';
 }
 
+
 .header-image {
   position: absolute;
   z-index: -1;
