@@ -25,10 +25,10 @@ class SignUpForm(FlaskForm):
 
     
 class LoginForm(FlaskForm):
-    username = StringField('User Name',
+    username = StringField('Username:',
         validators=[DataRequired(), Length(min=3, max=50)])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Log In')
+    password = PasswordField('Password:', validators=[DataRequired()])
+    submit = SubmitField('Login')
 
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()

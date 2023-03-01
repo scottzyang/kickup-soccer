@@ -23,3 +23,8 @@ div.homepage-style {
     opacity: 1;
   }
 }
+
+.background-image {
+  position: absolute;
+  z-index: -1;
+}
