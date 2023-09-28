@@ -34,6 +34,7 @@ Other functionality:
 
 
 ## Running the Application
+### Running Locally
 In the project directory, you can run:
 
 `python3 app.py`
@@ -46,6 +47,13 @@ From the project root directory, you can seed the database with mock data by run
 `python3 -m kickup_app.data.seed`
 
 This will populate the database with 100 players and 5 different teams. Players will have a `team_id` linking them to one of the 5 seeded teams.
+
+### Running via Docker
+To run in a Docker container, run the command:
+
+`docker compose up --build`
+
+This will generate containers for both the application and the database.
 
 ## Running Tests
 
