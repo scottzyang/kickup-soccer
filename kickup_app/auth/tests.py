@@ -54,9 +54,10 @@ class AuthTest(TestCase):
         db.drop_all()
         db.create_all()
 
-    def test_signup(self):        
+    def test_signup(self):      
+        create_user()  
         form_data = {
-            'username': 'scottzyang',
+            'username': 'pusheen',
             'password': 'password',
             'profile_picture': "https://picsum.photos/200/300",
             "first_name": "scott", 
@@ -67,9 +68,9 @@ class AuthTest(TestCase):
 
         self.app.post('/signup', data=form_data)
 
-        new_user = User.query.filter_by(username="scottzyang").one()
-        self.assertIsNotNone(new_user)
-        self.assertEqual(new_user.username, 'scottzyang')
+        new_user = User.query.filter_by(username="pusheen").one()
+        self.assertIsNone(new_user)
+        self.assertEqual(new_user.username, 'pusheen')
 
 
     def test_signup_existing_user(self):

@@ -15,6 +15,10 @@ https://kickup-soccer.onrender.com
 ![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795372731-03779eb36df551af8bbf0f3e?style=for-the-badge&label=Uptime-Robot-Status&labelColor=87CEEB)
 
 
+## Entity Relationship Diagram
+![Entity Relationship Diagram](images/ERD.png)
+
+
 ## Features/Usage
 
 Perform CRUD operations with user account, teams, and games.
