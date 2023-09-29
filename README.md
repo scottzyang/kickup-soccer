@@ -11,6 +11,10 @@ https://kickup-soccer.onrender.com
 
 **Framework:** Python Flask
 
+## Server Status:
+![Uptime Robot status](https://img.shields.io/uptimerobot/status/m795372731-03779eb36df551af8bbf0f3e?style=for-the-badge&label=Uptime-Robot-Status&labelColor=87CEEB)
+
+
 ## Entity Relationship Diagram
 ![Entity Relationship Diagram](images/ERD.png)
 
@@ -29,9 +33,6 @@ Other functionality:
 - Teams list displays teams and current roster count.
 - Players list displays players and current position.
 - Team profiles display current roster list and upcoming game schedule.
-
-
-
 
 ## Running the Application
 ### Running Locally
